@@ -180,7 +180,7 @@ impl GapEvent {
                 GapEvent::UpdateConnectionParamsComplete(param.update_conn_params)
             }
             esp_gap_ble_cb_event_t_ESP_GAP_BLE_SET_PKT_LENGTH_COMPLETE_EVT => {
-                GapEvent::SetPacketLengthComplete(param.pkt_data_lenth_cmpl)
+                GapEvent::SetPacketLengthComplete(param.pkt_data_length_cmpl)
             }
             esp_gap_ble_cb_event_t_ESP_GAP_BLE_SET_LOCAL_PRIVACY_COMPLETE_EVT => {
                 GapEvent::SetLocalPrivacy(param.local_privacy_cmpl)
