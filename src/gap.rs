@@ -2,6 +2,7 @@ use esp_idf_sys::*;
 
 #[derive(Clone, Copy)]
 pub enum GapEvent {
+    Unimplemented,
     AdvertisingDatasetComplete(esp_ble_gap_cb_param_t_ble_adv_data_cmpl_evt_param),
     ScanResponseDatasetComplete(esp_ble_gap_cb_param_t_ble_scan_rsp_data_cmpl_evt_param),
     ScanParameterDatasetComplete(esp_ble_gap_cb_param_t_ble_scan_param_cmpl_evt_param),
@@ -81,6 +82,7 @@ impl std::fmt::Debug for GapEvent {
             f,
             "{}",
             match self {
+                GapEvent::Unimplemented => "Unimplemented",
                 GapEvent::AdvertisingDatasetComplete(_) => "AdvertisingDatasetComplete",
                 GapEvent::ScanResponseDatasetComplete(_) => "ScanResponseDatasetComplete",
                 GapEvent::ScanParameterDatasetComplete(_) => "ScanParameterDatasetComplete",
@@ -208,7 +210,7 @@ impl GapEvent {
             }
             _ => {
                 log::warn!("Unhandled event {:?}", evt);
-                panic!("Unhandled event {:?}", evt)
+                GapEvent::Unimplemented
             }
         }
     }
