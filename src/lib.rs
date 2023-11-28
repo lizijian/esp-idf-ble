@@ -439,7 +439,7 @@ impl EspBle {
         data: advertise::AdvertiseData,
         cb: impl Fn(GapEvent) + 'static + Send,
     ) -> Result<(), EspError> {
-        info!("configure_advertising enter");
+info!("configure_advertising enter");
 
         let manufacturer_len = data.manufacturer.as_ref().map(|m| m.len()).unwrap_or(0) as u16;
         let service_data_len = data.service.as_ref().map(|s| s.len()).unwrap_or(0) as u16;
@@ -497,7 +497,7 @@ impl EspBle {
                 }
                 ptr
             },
-            appearance: data.appearance.into(),
+            appearance: <AppearanceCategory as Into<u16>>::into(data.appearance) as i32,
             flag: data.flag,
         };
 
@@ -513,7 +513,7 @@ impl EspBle {
     }
 
     pub fn start_advertise(&self, cb: impl Fn(GapEvent) + 'static + Send) -> Result<(), EspError> {
-        info!("start_advertise enter");
+info!("start_advertise enter");
 
         let mut adv_param: esp_ble_adv_params_t = esp_ble_adv_params_t {
             adv_int_min: 0x20,

@@ -1,9 +1,10 @@
 use crate::BtUuid;
+use num_enum::IntoPrimitive;
 use esp_idf_sys::*;
 
 #[allow(clippy::upper_case_acronyms)]
 #[repr(u16)]
-#[derive(Clone, Copy, Debug)]
+#[derive(Clone, Copy, Debug, IntoPrimitive)]
 pub enum AppearanceCategory {
     Unknown = 0x00,
     Phone,
@@ -56,6 +57,11 @@ pub enum AppearanceCategory {
     InsulinPump,
     MedicationDelivery,
     OutdoorSportsActivity = 0x51,
+    GenericHid = 0x03C0,
+    HidKeyboary,
+    HidMouse,
+    HidJoystick,
+    HidGamepad,
 }
 
 impl From<AppearanceCategory> for i32 {
