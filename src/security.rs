@@ -15,14 +15,14 @@ pub enum IOCapabilities {
 #[repr(u8)]
 pub enum AuthenticationRequest {
     #[default]
-    NoBonding = 0b0000_0000,
-    Bonding = 0b0000_0001,
-    Mitm = 0b0000_0010,
-    MitmBonding = 0b0000_0011,
-    SecureOnly = 0b0000_0100,
-    SecureBonding = 0b0000_0101,
-    SecureMitm = 0b0000_0110,
-    SecureMitmBonding = 0b0000_0111,
+    NoBonding = esp_idf_sys::ESP_LE_AUTH_NO_BOND as u8,
+    Bonding = esp_idf_sys::ESP_LE_AUTH_BOND as u8,
+    Mitm = esp_idf_sys::ESP_LE_AUTH_REQ_MITM as u8,
+    MitmBonding = esp_idf_sys::ESP_LE_AUTH_REQ_BOND_MITM as u8,
+    SecureOnly = esp_idf_sys::ESP_LE_AUTH_REQ_SC_ONLY as u8,
+    SecureBonding = esp_idf_sys::ESP_LE_AUTH_REQ_SC_BOND as u8,
+    SecureMitm = esp_idf_sys::ESP_LE_AUTH_REQ_SC_MITM as u8,
+    SecureMitmBonding = esp_idf_sys::ESP_LE_AUTH_REQ_SC_MITM_BOND as u8,
 }
 
 #[repr(u8)]

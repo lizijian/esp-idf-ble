@@ -19,7 +19,7 @@ You should also install [cargo espflash](https://github.com/esp-rs/espflash) to 
 
 Then you can launch the following command to compile one of the example, flash it to your device and monitor the ESP32 serial:
 
-`cargo espflash --example <example> --monitor -b 921600 -p <device> --target <target>`
+`cargo espflash flash --example <example> --monitor -b 921600 -p <device> --target <target>`
 
 Targets:
 
